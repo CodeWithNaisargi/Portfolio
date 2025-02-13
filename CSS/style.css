@@ -678,7 +678,7 @@ img {
 
 .portfolio .portfolio-item-inner {
   border: 6px solid var(--bg-black-100);
-  border-radius: 10px;
+  border-radius: 10pxn;
   overflow: hidden;
   cursor: pointer;
 }
@@ -686,6 +686,17 @@ img {
 .portfolio .portfolio-item-inner .portfolio-image img {
   width: 100%;
   display: block;
+}
+.portfolio-item-details {
+  background: var(--bg-black-100);
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 10px;
+  font-size: 16px;
+}
+.portfolio-item-details p {
+  margin: 5px 0;
+  color: var(--text-black-900);
 }
 
 /* Contact */
