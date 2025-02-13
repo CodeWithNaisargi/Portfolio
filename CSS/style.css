@@ -830,10 +830,12 @@ img {
   .home .home-info {
     flex: 0 0 100%;
     max-width: 100%;
+    margin-top: 7%; /*use to show space before my title start*/
   }
   .home .home-img {
-    margin-top: 20%;
+    margin-top: 25%;
     margin-left: 5%;
+    margin-bottom: 5%; /*use to show space after image*/
   }
   .home-img::after {
     content: "";
@@ -842,7 +844,7 @@ img {
     width: 80px;
     border-bottom: 10px solid var(--skin-color);
     border-right: 10px solid var(--skin-color);
-    right: -190px;
+    right: -180px;
     bottom: -30px;
   }
   .home-img::before {
