@@ -642,8 +642,9 @@ h3.my-profession {
 .projects .projects-item-inner {
   border: 6px solid var(--bg-black-100);
   border-radius: 10px;
-  /* overflow: hidden; */
+  overflow: hidden;
   cursor: pointer;
+  /* height: 300px; */
 }
 
 /* .projects-image img {
@@ -651,12 +652,12 @@ h3.my-profession {
   object-fit: fill;
 } */
 
-img {
-  /* max-width: min-content; */
+.projects-img img {
   width: 100%;
-  object-fit: fill;
+  height: auto;
+  aspect-ratio: 14 / 10;
+  /* Example for a 16:9 ratio */
 }
-
 /* Art Store */
 
 .portfolio .portfolio-heading {
@@ -683,9 +684,9 @@ img {
   cursor: pointer;
 }
 
-.portfolio .portfolio-item-inner .portfolio-image img {
+.portfolio-img img {
   width: 100%;
-  display: block;
+  object-fit: fill;
 }
 .portfolio-item-details {
   background: var(--bg-black-100);
