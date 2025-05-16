@@ -1,348 +1,943 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Naisargi's Folio</title>
-    <!--Link of all CSS files-->
-    <link rel="stylesheet" href="./CSS/style.css" />
-    <link rel="stylesheet" href="./CSS/skins/color-1.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-    />
-    <!--Style switcher-->
-    <link
-      rel="stylesheet"
-      href="./CSS/skins/color-1.css"
-      class="alternate-style"
-      title="color-1"
-      disabled
-    />
-    <link
-      rel="stylesheet"
-      href="./CSS/skins/color-2.css"
-      class="alternate-style"
-      title="color-2"
-      disabled
-    />
-    <link
-      rel="stylesheet"
-      href="./CSS/skins/color-3.css"
-      class="alternate-style"
-      title="color-3"
-      disabled
-    />
-    <link
-      rel="stylesheet"
-      href="./CSS/skins/color-4.css"
-      class="alternate-style"
-      title="color-4"
-      disabled
-    />
-    <link
-      rel="stylesheet"
-      href="./CSS/skins/color-5.css"
-      class="alternate-style"
-      title="color-5"
-      disabled
-    />
-    <link rel="stylesheet" href="./CSS/style-switcher.css" />
-  </head>
-  <body>
-    <!--Main container Start-->
-    <div class="main-container">
-      <!--Aside Start-->
-      <div class="aside">
-        <div class="logo">
-          <a href="#"><span>N</span>iu<span>V</span>erse</a>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Naisargi's Folio</title>
+  <!--Link of all CSS files-->
+  <link rel="stylesheet" href="./CSS/style.css" />
+  <link rel="stylesheet" href="./CSS/skins/color-1.css" />
+  <link rel="stylesheet" href="./CSS/animations.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <!--Style switcher-->
+  <link rel="stylesheet" href="./CSS/skins/color-1.css" class="alternate-style" title="color-1" disabled />
+  <link rel="stylesheet" href="./CSS/skins/color-2.css" class="alternate-style" title="color-2" disabled />
+  <link rel="stylesheet" href="./CSS/skins/color-3.css" class="alternate-style" title="color-3" disabled />
+  <link rel="stylesheet" href="./CSS/skins/color-4.css" class="alternate-style" title="color-4" disabled />
+  <link rel="stylesheet" href="./CSS/skins/color-5.css" class="alternate-style" title="color-5" disabled />
+  <link rel="stylesheet" href="./CSS/style-switcher.css" />
+  <!-- Background Animation Styles -->
+  <style>
+    .animated-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(45deg, #f3f4f6, #ffffff);
+      overflow: hidden;
+    }
+
+    /* Main rotating gradient */
+    .animated-background::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 60%);
+      animation: rotate 20s linear infinite;
+      top: -50%;
+      left: -50%;
+    }
+
+    /* Secondary rotating gradient */
+    .animated-background::after {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 60%);
+      animation: rotate 15s linear infinite reverse;
+      top: -50%;
+      left: -50%;
+    }
+
+    /* Floating shapes */
+    .shape {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.1);
+      animation: float 20s infinite linear;
+      border-radius: 50%;
+    }
+
+    .shape:nth-child(1) {
+      width: 150px;
+      height: 150px;
+      left: 10%;
+      animation-delay: 0s;
+      animation-duration: 25s;
+    }
+
+    .shape:nth-child(2) {
+      width: 200px;
+      height: 200px;
+      left: 30%;
+      animation-delay: 2s;
+      animation-duration: 30s;
+    }
+
+    .shape:nth-child(3) {
+      width: 120px;
+      height: 120px;
+      left: 50%;
+      animation-delay: 4s;
+      animation-duration: 20s;
+    }
+
+    .shape:nth-child(4) {
+      width: 180px;
+      height: 180px;
+      left: 70%;
+      animation-delay: 6s;
+      animation-duration: 28s;
+    }
+
+    /* Animated particles */
+    .particle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 50%;
+      animation: float 15s infinite linear;
+    }
+
+    /* Glowing orbs */
+    .glow {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+      animation: pulse 8s infinite ease-in-out;
+    }
+
+    .glow:nth-child(1) {
+      top: 20%;
+      left: 20%;
+      animation-delay: 0s;
+    }
+
+    .glow:nth-child(2) {
+      top: 60%;
+      left: 60%;
+      animation-delay: 2s;
+    }
+
+    .glow:nth-child(3) {
+      top: 40%;
+      left: 80%;
+      animation-delay: 4s;
+    }
+
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) translateX(0) rotate(0deg);
+        opacity: 0;
+      }
+
+      50% {
+        opacity: 0.5;
+      }
+
+      100% {
+        transform: translateY(-100vh) translateX(100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 0.3;
+      }
+
+      50% {
+        transform: scale(1.5);
+        opacity: 0.5;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 0.3;
+      }
+    }
+
+    /* Add a subtle wave effect */
+    .wave {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+      animation: wave 10s infinite linear;
+      top: -50%;
+      left: -50%;
+    }
+
+    @keyframes wave {
+      0% {
+        transform: translateX(-50%) translateY(-50%) rotate(0deg);
+      }
+
+      100% {
+        transform: translateX(-50%) translateY(-50%) rotate(360deg);
+      }
+    }
+  </style>
+  <style>
+    .style-switcher .colors span {
+      display: inline-block;
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .style-switcher .colors span.color-1 {
+      background:#e91e63; /* Pink */
+    }
+
+    .style-switcher .colors span.color-2 {
+      background:  #9c27b0; /* Purple */
+    }
+
+    .style-switcher .colors span.color-3 {
+      background: #009688; /* Teal */
+    }
+
+    .style-switcher .colors span.color-4 {
+      background: #ff5722; /* Deep Orange */
+    }
+
+    .style-switcher .colors span.color-5 {
+      background:  #2196f3; /* Blue */
+    }
+  </style>
+  <style>
+    /* Project Gallery Styles */
+    .project-gallery {
+      display: flex;
+      gap: 10px;
+      margin: 15px 0;
+      overflow-x: auto;
+      padding: 10px 0;
+    }
+
+    .project-gallery img {
+      width: 100px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .project-gallery img:hover {
+      transform: scale(1.1);
+    }
+
+    .project-gallery img.active {
+      border: 2px solid #2196f3;
+    }
+
+    .modal-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .gallery-nav {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 10px 0;
+    }
+
+    .gallery-nav button {
+      padding: 8px 15px;
+      background: #2196f3;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .gallery-nav button:hover {
+      background: #1976d2;
+    }
+  </style>
+  <style>
+    /* Art Store Grid Layout */
+    .art-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 87px;
+      justify-items: left;
+      padding: 40px;
+      min-width: 30%;
+      margin: 0 auto;
+      perspective: 1000px;
+    }
+
+    .portfolio-item {
+      width: 350%;
+      margin: 0;
+      transform-style: preserve-3d;
+      animation: fadeInUp 0.6s ease-out forwards;
+      opacity: 0;
+    }
+
+    .portfolio-item:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    .portfolio-item:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .portfolio-item:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    .portfolio-item:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+
+    .portfolio-item:nth-child(5) {
+      animation-delay: 0.5s;
+    }
+
+    .portfolio-item:nth-child(6) {
+      animation-delay: 0.6s;
+    }
+
+    .portfolio-item:nth-child(7) {
+      animation-delay: 0.7s;
+    }
+
+    .portfolio-item:nth-child(8) {
+      animation-delay: 0.8s;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .portfolio-item-inner {
+      background: var(--bg-black-100);
+      border-radius: 20px;
+      overflow: hidden;
+      min-width: 183%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .portfolio-item-inner:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .portfolio-item-inner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .portfolio-item-inner:hover::before {
+      opacity: 1;
+    }
+
+    .portfolio-img {
+      position: relative;
+      width: 100%;
+      height: 280px;
+      overflow: hidden;
+    }
+
+    .portfolio-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .portfolio-item-inner:hover .portfolio-img img {
+      transform: scale(1.1);
+    }
+
+    .art-details {
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg-black-100);
+      min-height: 160px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .art-details h3 {
+      font-size: 24px;
+      color: var(--text-black-900);
+      margin-bottom: 12px;
+      font-weight: 600;
+      line-height: 1.3;
+      transition: color 0.3s ease;
+    }
+
+    .portfolio-item-inner:hover .art-details h3 {
+      color: var(--skin-color);
+    }
+
+    .art-details p {
+      color: var(--text-black-700);
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      transition: color 0.3s ease;
+    }
+
+    .art-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+      padding-top: 15px;
+      border-top: 2px solid rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .portfolio-item-inner:hover .art-meta {
+      transform: translateY(-5px);
+    }
+
+    .price-tag {
+      font-size: 18px;
+      font-weight: 600;
+      color: #ffffff;
+      transition: transform 0.3s ease;
+    }
+
+    .portfolio-item-inner:hover .price-tag {
+      transform: scale(1.05);
+    }
+
+    .art-category {
+      background: var(--skin-color);
+      color: white;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 15px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .art-category::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .portfolio-item-inner:hover .art-category::before {
+      left: 100%;
+    }
+
+    .quick-preview {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      transform: translateY(100%);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(5px);
+    }
+
+    .portfolio-item-inner:hover .quick-preview {
+      transform: translateY(0);
+    }
+
+    .quick-preview-btn {
+      width: 100%;
+      padding: 12px;
+      background: var(--skin-color);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quick-preview-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .quick-preview-btn:hover::before {
+      left: 100%;
+    }
+
+    .quick-preview-btn:hover {
+      background: var(--skin-color-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 1400px) {
+      .art-grid {
+        max-width: 1400px;
+        gap: 30px;
+        padding: 30px;
+      }
+
+      .portfolio-img {
+        height: 250px;
+      }
+
+      .art-details {
+        padding: 20px;
+        min-height: 150px;
+      }
+    }
+
+    @media (max-width: 991px) {
+      .art-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+        padding: 25px;
+      }
+
+      .portfolio-img {
+        height: 220px;
+      }
+
+      .art-details {
+        padding: 20px;
+        min-height: 140px;
+      }
+
+      .art-details h3 {
+        font-size: 22px;
+      }
+
+      .art-details p {
+        font-size: 15px;
+      }
+
+      .price-tag {
+        font-size: 24px;
+      }
+
+      .art-category {
+        padding: 6px 15px;
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .art-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 20px;
+      }
+
+      .portfolio-img {
+        height: 240px;
+      }
+
+      .art-details {
+        padding: 20px;
+        min-height: 150px;
+      }
+
+      .art-details h3 {
+        font-size: 22px;
+      }
+
+      .art-details p {
+        font-size: 15px;
+        margin-bottom: 15px;
+      }
+
+      .price-tag {
+        font-size: 24px;
+      }
+
+      .art-category {
+        padding: 6px 15px;
+        font-size: 14px;
+      }
+
+      .quick-preview-btn {
+        padding: 10px;
+        font-size: 15px;
+      }
+    }
+  </style>
+  <style>
+    /* Responsive Grid */
+    @media (max-width: 991px) {
+      .portfolio-item {
+        width: 50%;
+        height: 400px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .portfolio-item {
+        width: 100%;
+        height: 400px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Add animated background -->
+  <div class="animated-background">
+    <div class="wave"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="glow"></div>
+    <div class="glow"></div>
+    <div class="glow"></div>
+    <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
+    <div class="particle" style="left: 30%; animation-delay: 4s;"></div>
+    <div class="particle" style="left: 40%; animation-delay: 6s;"></div>
+    <div class="particle" style="left: 50%; animation-delay: 8s;"></div>
+    <div class="particle" style="left: 60%; animation-delay: 10s;"></div>
+    <div class="particle" style="left: 70%; animation-delay: 12s;"></div>
+    <div class="particle" style="left: 80%; animation-delay: 14s;"></div>
+  </div>
+  <!--Main container Start-->
+  <div class="main-container">
+    <!--Aside Start-->
+    <div class="aside">
+      <div class="logo">
+        <a href="#"><span>N</span>iu<span>V</span>erse</a>
+      </div>
+      <div class="nav-toggler"><span> </span></div>
+      <ul class="nav">
+        <li>
+          <a href="#home" class="active"><i class="fa fa-home"></i>Home</a>
+        </li>
+        <li>
+          <a href="#about"><i class="fa fa-user"></i>About</a>
+        </li>
+        <li>
+          <a href="#services"><i class="fa fa-list"></i>services</a>
+        </li>
+        <li>
+          <a href="#projects"><i class="fa fa-folder"></i>Projects</a>
+        </li>
+        <li>
+          <a href="#certificates"><i class="fa fa-certificate"></i>Certificates</a>
+        </li>
+        <li>
+          <a href="#Art-Store"><i class="fa fa-briefcase"></i>Art Store</a>
+        </li>
+        <li>
+          <a href="#contact"><i class="fa fa-comments"></i>Contact</a>
+        </li>
+      </ul>
+    </div>
+    <!--Aside ends-->
+    <!--Main content Start-->
+    <div class="main-content">
+      <!--Home section start-->
+      <section class="home active section" id="home">
+        <div class="container">
+          <div class="row">
+            <div class="home-info padd-15">
+              <h3 class="hello">
+                Hello, my name is <span class="name">Naisargi Patel</span>
+              </h3>
+              <h3 class="my-profession">
+                I'm a <span class="typing">Web Designer</span>
+              </h3>
+              <p>
+                I am pursuing a Bachelor's in Engineering, specializing in
+                Artificial Intelligence and Machine Learning. Alongside my
+                technical journey, I am an artist, passionate about creating
+                unique and diverse forms of art.
+              </p>
+              <a href="https://drive.google.com/file/d/1q5m-obyTFqmRM81Oz7evf94fzaNlbCDb/view?usp=drive_link"
+                class="btn" target="_blank">Download CV</a>
+            </div>
+            <div class="home-img">
+              <img class="mypic" src="images/self.jpg" />
+            </div>
+          </div>
         </div>
-        <div class="nav-toggler"><span> </span></div>
-        <ul class="nav">
-          <li>
-            <a href="#home" class="active"><i class="fa fa-home"></i>Home</a>
-          </li>
-          <li>
-            <a href="#about"><i class="fa fa-user"></i>About</a>
-          </li>
-          <li>
-            <a href="#services"><i class="fa fa-list"></i>services</a>
-          </li>
-          <li>
-            <a href="#projects"><i class="fa fa-folder"></i>Projects</a>
-          </li>
-          <li>
-            <a href="#Art-Store"><i class="fa fa-briefcase"></i>Art Store</a>
-          </li>
-          <li>
-            <a href="#contact"><i class="fa fa-comments"></i>Contact</a>
-          </li>
-        </ul>
-      </div>
-      <!--Aside ends-->
-      <!--Main content Start-->
-      <div class="main-content">
-        <!--Home section start-->
-        <section class="home active section" id="home">
-          <div class="container">
-            <div class="row">
-              <div class="home-info padd-15">
-                <h3 class="hello">
-                  Hello, my name is <span class="name">Naisargi Patel</span>
-                </h3>
-                <h3 class="my-profession">
-                  I'm a <span class="typing">Web Designer</span>
-                </h3>
-                <p>
-                  I am pursuing a Bachelor's in Engineering, specializing in
-                  Artificial Intelligence and Machine Learning. Alongside my
-                  technical journey, I am an artist, passionate about creating
-                  unique and diverse forms of art.
-                </p>
-                <a
-                  href="https://drive.google.com/file/d/1q5m-obyTFqmRM81Oz7evf94fzaNlbCDb/view?usp=drive_link"
-                  class="btn"
-                  target="_blank"
-                  >Download CV</a
-                >
-              </div>
-              <div class="home-img">
-                <img class="mypic" src="images/self.jpg" />
-              </div>
+      </section>
+      <!--Home section End-->
+      <!--About section start-->
+      <section class="about section" id="about">
+        <div class="container">
+          <div class="row">
+            <div class="section-title padd-15">
+              <h2>About Me</h2>
             </div>
           </div>
-        </section>
-        <!--Home section End-->
-        <!--About section start-->
-        <section class="about section" id="about">
-          <div class="container">
-            <div class="row">
-              <div class="section-title padd-15">
-                <h2>About Me</h2>
+          <div class="row">
+            <div class="about-content padd-15">
+              <div class="row">
+                <div class="about-text padd-15">
+                  <h3>I'm Naisargi Patel and<span> Web Developer</span></h3>
+                  <p>
+                    I am sophisticated at programming and have a deep passion
+                    for creating user interfaces. Design selection excites me,
+                    and I excel at crafting visually appealing layouts. I
+                    focus on choosing the most suitable designs tailored to
+                    website requirements. My goal is to deliver user-friendly
+                    and aesthetically pleasing experiences. Simultaneously, I
+                    am pursuing my passion, which is creating creative arts.
+                  </p>
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="about-content padd-15">
-                <div class="row">
-                  <div class="about-text padd-15">
-                    <h3>I'm Naisargi Patel and<span> Web Developer</span></h3>
-                    <p>
-                      I am sophisticated at programming and have a deep passion
-                      for creating user interfaces. Design selection excites me,
-                      and I excel at crafting visually appealing layouts. I
-                      focus on choosing the most suitable designs tailored to
-                      website requirements. My goal is to deliver user-friendly
-                      and aesthetically pleasing experiences. Simultaneously, I
-                      am pursuing my passion, which is creating creative arts.
-                    </p>
+              <div class="row">
+                <div class="personal-info padd-15">
+                  <div class="row">
+                    <div class="info-item padd-15">
+                      <p>Birthday : <span>17 oct 2004</span></p>
+                    </div>
+                    <div class="info-item padd-15">
+                      <p>Age : <span>20</span></p>
+                    </div>
+                    <div class="info-item padd-15">
+                      <p>
+                        Website :<span>
+                          <a style="color: rgb(70, 68, 68)"
+                            href="https://naisargipatel-portfolio.vercel.app/">Naisargi's Folio</a></span>
+                      </p>
+                    </div>
+                    <div class="info-item padd-15">
+                      <p>Email : <span>naisargi1716@gmail.com</span></p>
+                    </div>
+                    <div class="info-item padd-15">
+                      <p>
+                        LinkedIn :<span>
+                          <a style="color: rgb(70, 68, 68)"
+                            href="www.linkedin.com/in/codewithnaisargi">codewithnaisargi</a></span>
+                      </p>
+                    </div>
+                    <div class="info-item padd-15">
+                      <p>Phone : <span>+919427178247</span></p>
+                    </div>
+                    <div class="info-item padd-15">
+                      <p>City : <span>Ahmedabad</span></p>
+                    </div>
+                    <div class="info-item padd-15">
+                      <p>Freelance : <span>Available</span></p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="buttons padd-15">
+                      <a href="#contact" data-section-index="1" class="btn hire-me">Hire Me</a>
+                    </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="personal-info padd-15">
-                    <div class="row">
-                      <div class="info-item padd-15">
-                        <p>Birthday : <span>17 oct 2004</span></p>
-                      </div>
-                      <div class="info-item padd-15">
-                        <p>Age : <span>20</span></p>
-                      </div>
-                      <div class="info-item padd-15">
-                        <p>
-                          Website :<span>
-                            <a
-                              style="color: rgb(70, 68, 68)"
-                              href="https://naisargipatel-portfolio.vercel.app/"
-                              >Naisargi's Folio</a
-                            ></span
-                          >
-                        </p>
-                      </div>
-                      <div class="info-item padd-15">
-                        <p>Email : <span>naisargi1716@gmail.com</span></p>
-                      </div>
-                      <div class="info-item padd-15">
-                        <p>
-                          LinkedIn :<span>
-                            <a
-                              style="color: rgb(70, 68, 68)"
-                              href="www.linkedin.com/in/codewithnaisargi"
-                              >codewithnaisargi</a
-                            ></span
-                          >
-                        </p>
-                      </div>
-                      <div class="info-item padd-15">
-                        <p>Phone : <span>+919427178247</span></p>
-                      </div>
-                      <div class="info-item padd-15">
-                        <p>City : <span>Ahmedabad</span></p>
-                      </div>
-                      <div class="info-item padd-15">
-                        <p>Freelance : <span>Available</span></p>
+                <div class="skills padd-15">
+                  <div class="row">
+                    <div class="skills-item padd-15">
+                      <h5>JavaScript</h5>
+                      <div class="progress">
+                        <div class="progress-in" style="width: 90%"></div>
+                        <div class="skills-percent">90%</div>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="buttons padd-15">
-                        <a
-                          href="#contact"
-                          data-section-index="1"
-                          class="btn hire-me"
-                          >Hire Me</a
-                        >
+                    <div class="skills-item padd-15">
+                      <h5>HTML</h5>
+                      <div class="progress">
+                        <div class="progress-in" style="width: 95%"></div>
+                        <div class="skills-percent">95%</div>
                       </div>
                     </div>
-                  </div>
-                  <div class="skills padd-15">
-                    <div class="row">
-                      <div class="skills-item padd-15">
-                        <h5>JavaScript</h5>
-                        <div class="progress">
-                          <div class="progress-in" style="width: 90%"></div>
-                          <div class="skills-percent">90%</div>
-                        </div>
+                    <div class="skills-item padd-15">
+                      <h5>CSS</h5>
+                      <div class="progress">
+                        <div class="progress-in" style="width: 85%"></div>
+                        <div class="skills-percent">85%</div>
                       </div>
-                      <div class="skills-item padd-15">
-                        <h5>HTML</h5>
-                        <div class="progress">
-                          <div class="progress-in" style="width: 95%"></div>
-                          <div class="skills-percent">95%</div>
-                        </div>
-                      </div>
-                      <div class="skills-item padd-15">
-                        <h5>CSS</h5>
-                        <div class="progress">
-                          <div class="progress-in" style="width: 85%"></div>
-                          <div class="skills-percent">85%</div>
-                        </div>
-                      </div>
-                      <div class="skills-item padd-15">
-                        <h5>Bootstrap</h5>
-                        <div class="progress">
-                          <div class="progress-in" style="width: 75%"></div>
-                          <div class="skills-percent">75%</div>
-                        </div>
+                    </div>
+                    <div class="skills-item padd-15">
+                      <h5>Bootstrap</h5>
+                      <div class="progress">
+                        <div class="progress-in" style="width: 75%"></div>
+                        <div class="skills-percent">75%</div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="education padd-15">
-                    <h3 class="title">Education</h3>
-                    <div class="row">
-                      <div class="timeline-box padd-15">
-                        <div class="timeline shadow-dark">
-                          <!--TimeLine Items -->
-                          <div class="timeline-item">
-                            <div class="circle-dot"></div>
-                            <h3 class="timeline-date">
-                              <i class="fa fa-calendar"></i> 2024 - Present
-                            </h3>
-                            <h4 class="timeline-title">
-                              Bachelor of Engineering in Artificial Intelligence
-                              and Machine Learning
-                            </h4>
-                            <p class="timeline-text">
-                              Currently pursuing a Bachelor of Engineering in
-                              Artificial Intelligence and Machine Learning at LJ
-                              University, Ahmedabad, with an expected graduation
-                              in 2026. Focused on developing expertise in AI
-                              technologies and machine learning algorithms.
-                            </p>
-                          </div>
-                          <!--TimeLine Items -->
-                          <div class="timeline-item">
-                            <div class="circle-dot"></div>
-                            <h3 class="timeline-date">
-                              <i class="fa fa-calendar"></i> 2021 - 2024
-                            </h3>
-                            <h4 class="timeline-title">
-                              Diploma in Computer Engineering(AIML)
-                            </h4>
-                            <p class="timeline-text">
-                              Completed Diploma in Computer Engineering (AI &
-                              ML) from LJ University, Ahmedabad, with an
-                              impressive CGPA of 8.7. I gained a solid
-                              foundation in computer engineering principles,
-                              with a specialized focus on Artificial
-                              Intelligence and Machine Learning.
-                            </p>
-                          </div>
-                          <!--TimeLine Items -->
-                          <div class="timeline-item">
-                            <div class="circle-dot"></div>
-                            <h3 class="timeline-date">
-                              <i class="fa fa-calendar"></i> 2020 - 2021
-                            </h3>
-                            <h4 class="timeline-title">Higher Secondary</h4>
-                            <p class="timeline-text">
-                              Completed Class 10 from Durga High School,
-                              Maninagar, Ahmedabad, with an 80% grade,
-                              demonstrating strong academic performance and
-                              dedication.
-                            </p>
-                          </div>
+              </div>
+              <div class="row">
+                <div class="education padd-15">
+                  <h3 class="title">Education</h3>
+                  <div class="row">
+                    <div class="timeline-box padd-15">
+                      <div class="timeline shadow-dark">
+                        <!--TimeLine Items -->
+                        <div class="timeline-item">
+                          <div class="circle-dot"></div>
+                          <h3 class="timeline-date">
+                            <i class="fa fa-calendar"></i> 2024 - Present
+                          </h3>
+                          <h4 class="timeline-title">
+                            Bachelor of Engineering in Artificial Intelligence
+                            and Machine Learning
+                          </h4>
+                          <p class="timeline-text">
+                            Currently pursuing a Bachelor of Engineering in
+                            Artificial Intelligence and Machine Learning at LJ
+                            University, Ahmedabad, with an expected graduation
+                            in 2026. Focused on developing expertise in AI
+                            technologies and machine learning algorithms.
+                          </p>
+                        </div>
+                        <!--TimeLine Items -->
+                        <div class="timeline-item">
+                          <div class="circle-dot"></div>
+                          <h3 class="timeline-date">
+                            <i class="fa fa-calendar"></i> 2021 - 2024
+                          </h3>
+                          <h4 class="timeline-title">
+                            Diploma in Computer Engineering(AIML)
+                          </h4>
+                          <p class="timeline-text">
+                            Completed Diploma in Computer Engineering (AI &
+                            ML) from LJ University, Ahmedabad, with an
+                            impressive CGPA of 8.7. I gained a solid
+                            foundation in computer engineering principles,
+                            with a specialized focus on Artificial
+                            Intelligence and Machine Learning.
+                          </p>
+                        </div>
+                        <!--TimeLine Items -->
+                        <div class="timeline-item">
+                          <div class="circle-dot"></div>
+                          <h3 class="timeline-date">
+                            <i class="fa fa-calendar"></i> 2020 - 2021
+                          </h3>
+                          <h4 class="timeline-title">Higher Secondary</h4>
+                          <p class="timeline-text">
+                            Completed Class 10 from Durga High School,
+                            Maninagar, Ahmedabad, with an 80% grade,
+                            demonstrating strong academic performance and
+                            dedication.
+                          </p>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div class="experience padd-15">
-                    <h3 class="title">Achievements</h3>
-                    <div class="row">
-                      <div class="timeline-box padd-15">
-                        <div class="timeline shadow-dark">
-                          <!--TimeLine Items -->
-                          <div class="timeline-item">
-                            <div class="circle-dot"></div>
-                            <h3 class="timeline-date">
-                              <i class="fa fa-calendar"></i> 2023
-                            </h3>
-                            <h4 class="timeline-title">
-                              Coding Contest Participant in Royal Techno Soft
-                              Private Limited, 2023
-                            </h4>
-                            <p class="timeline-text">
-                              Achieved 2nd rank in the coding contest, securing
-                              a prize of ₹10,000. The contest covered 5
-                              programming subjects, including C language, Candy
-                              Game task, Arduino, Machine Learning, Java, and AI
-                              algorithms, demonstrating strong problem-solving
-                              and technical skills.
-                            </p>
-                          </div>
-                          <!--TimeLine Items -->
-                          <div class="timeline-item">
-                            <div class="circle-dot"></div>
-                            <h3 class="timeline-date">
-                              <i class="fa fa-calendar"></i> 2022
-                            </h3>
-                            <h4 class="timeline-title">
-                              Social & Cultural Values Moderator in LJ
-                              Polytechnic, Sanand, Ahmedabad, 2022
-                            </h4>
-                            <p class="timeline-text">
-                              Collaborated with peers to enhance communication
-                              skills while promoting social and cultural values
-                              within the student community, fostering a
-                              collaborative environment.
-                            </p>
-                          </div>
-                          <!--TimeLine Items -->
-                          <div class="timeline-item">
-                            <div class="circle-dot"></div>
-                            <h3 class="timeline-date">
-                              <i class="fa fa-calendar"></i> 2021
-                            </h3>
-                            <h4 class="timeline-title">
-                              English Speaking Skills Moderator in LJ
-                              Polytechnic, Sanand, Ahmedabad, 2021
-                            </h4>
-                            <p class="timeline-text">
-                              Facilitated English-speaking activities aimed at
-                              developing students' speaking, writing, listening,
-                              and reading skills to foster language proficiency,
-                              contributing to their overall academic growth.
-                            </p>
-                          </div>
+                </div>
+                <div class="experience padd-15">
+                  <h3 class="title">Achievements</h3>
+                  <div class="row">
+                    <div class="timeline-box padd-15">
+                      <div class="timeline shadow-dark">
+                        <!--TimeLine Items -->
+                        <div class="timeline-item">
+                          <div class="circle-dot"></div>
+                          <h3 class="timeline-date">
+                            <i class="fa fa-calendar"></i> 2023
+                          </h3>
+                          <h4 class="timeline-title">
+                            Coding Contest Participant in Royal Techno Soft
+                            Private Limited, 2023
+                          </h4>
+                          <p class="timeline-text">
+                            Achieved 2nd rank in the coding contest, securing
+                            a prize of ₹10,000. The contest covered 5
+                            programming subjects, including C language, Candy
+                            Game task, Arduino, Machine Learning, Java, and AI
+                            algorithms, demonstrating strong problem-solving
+                            and technical skills.
+                          </p>
+                        </div>
+                        <!--TimeLine Items -->
+                        <div class="timeline-item">
+                          <div class="circle-dot"></div>
+                          <h3 class="timeline-date">
+                            <i class="fa fa-calendar"></i> 2022
+                          </h3>
+                          <h4 class="timeline-title">
+                            Social & Cultural Values Moderator in LJ
+                            Polytechnic, Sanand, Ahmedabad, 2022
+                          </h4>
+                          <p class="timeline-text">
+                            Collaborated with peers to enhance communication
+                            skills while promoting social and cultural values
+                            within the student community, fostering a
+                            collaborative environment.
+                          </p>
+                        </div>
+                        <!--TimeLine Items -->
+                        <div class="timeline-item">
+                          <div class="circle-dot"></div>
+                          <h3 class="timeline-date">
+                            <i class="fa fa-calendar"></i> 2021
+                          </h3>
+                          <h4 class="timeline-title">
+                            English Speaking Skills Moderator in LJ
+                            Polytechnic, Sanand, Ahmedabad, 2021
+                          </h4>
+                          <p class="timeline-text">
+                            Facilitated English-speaking activities aimed at
+                            developing students' speaking, writing, listening,
+                            and reading skills to foster language proficiency,
+                            contributing to their overall academic growth.
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -351,463 +946,1120 @@
               </div>
             </div>
           </div>
-        </section>
-        <!--About section End-->
-        <!--Services section start-->
-        <section class="service section" id="services">
-          <div class="container">
-            <div class="row">
-              <div class="section-title padd-15">
-                <h2>Services</h2>
-              </div>
+        </div>
+      </section>
+      <!--About section End-->
+      <!--Services section start-->
+      <section class="service section" id="services">
+        <div class="container">
+          <div class="row">
+            <div class="section-title padd-15">
+              <h2>Services</h2>
             </div>
-            <div class="row">
-              <!--Service Item Start-->
-              <div class="service-item padd-15">
-                <div class="service-item-inner">
-                  <div class="icon">
-                    <i class="fa fa-mobile-alt"></i>
-                  </div>
+          </div>
+          <div class="row">
+            <!--Service Item Start-->
+            <div class="service-item padd-15">
+              <div class="service-item-inner">
+                <div class="icon">
+                  <i class="fa fa-mobile-alt"></i>
+                </div>
+                <div class="service-content">
                   <h4>Web Design</h4>
-                  <p>
-                    I design responsive websites using HTML, CSS, JavaScript,
-                    Python, and PHP. My services also include hosting solutions
-                    and ongoing maintenance for seamless performance.
-                  </p>
+                  <p>I design responsive websites using HTML, CSS, JavaScript, Python, and PHP. My services also include
+                    hosting solutions and ongoing maintenance for seamless performance.</p>
+                  <button type="button" class="service-btn" onclick="scrollToContact()">Get Started</button>
                 </div>
               </div>
-              <!--Service Item End-->
-              <!--Service Item Start-->
-              <div class="service-item padd-15">
-                <div class="service-item-inner">
-                  <div class="icon">
-                    <i class="fa fa-laptop" aria-hidden="true"></i>
-                  </div>
+            </div>
+            <!--Service Item End-->
+            <!--Service Item Start-->
+            <div class="service-item padd-15">
+              <div class="service-item-inner">
+                <div class="icon">
+                  <i class="fa fa-laptop" aria-hidden="true"></i>
+                </div>
+                <div class="service-content">
                   <h4>Graphic Editing</h4>
-                  <p>
-                    I design catalogs, logos, and templates for any assignment
-                    using Canva and Photoshop. Whether for mini or large
-                    projects, I ensure your designs are eye-catching and
-                    professional.
-                  </p>
+                  <p>I design catalogs, logos, and templates for any assignment using Canva and Photoshop. Whether for
+                    mini or large projects, I ensure your designs are eye-catching and professional.</p>
+                  <button type="button" class="service-btn" onclick="scrollToContact()">Get Started</button>
                 </div>
               </div>
-              <!--Service Item End-->
-              <!--Service Item Start-->
-              <div class="service-item padd-15">
-                <div class="service-item-inner">
-                  <div class="icon">
-                    <i class="fa fa-pencil-square"></i>
-                  </div>
+            </div>
+            <!--Service Item End-->
+            <!--Service Item Start-->
+            <div class="service-item padd-15">
+              <div class="service-item-inner">
+                <div class="icon">
+                  <i class="fa fa-pencil-square"></i>
+                </div>
+                <div class="service-content">
                   <h4>Creative Arts</h4>
-                  <p>
-                    I create handmade art, including intricate calligraphy and
-                    unique wall art designs. My creations bring elegance and
-                    personality to any space. Let's bring your artistic vision
-                    to life!
-                  </p>
+                  <p>I create handmade art, including intricate calligraphy and unique wall art designs. My creations
+                    bring elegance and personality to any space. Let's bring your artistic vision to life!</p>
+                  <button type="button" class="service-btn" onclick="scrollToContact()">Get Started</button>
                 </div>
               </div>
-              <!--Service Item End-->
-              <!--Service Item Start-->
-              <div class="service-item padd-15">
-                <div class="service-item-inner">
-                  <div class="icon">
-                    <i class="fa fa-code"></i>
-                  </div>
+            </div>
+            <!--Service Item End-->
+            <!--Service Item Start-->
+            <div class="service-item padd-15">
+              <div class="service-item-inner">
+                <div class="icon">
+                  <i class="fa fa-code"></i>
+                </div>
+                <div class="service-content">
                   <h4>PowerPoint Presentation</h4>
-                  <p>
-                    I create professional PowerPoint presentations with
-                    attractive designs, well-structured content, and
-                    eye-catching front pages. Let me craft a presentation that
-                    effectively
-                  </p>
+                  <p>I create professional PowerPoint presentations with attractive designs, well-structured content,
+                    and eye-catching front pages. Let me craft a presentation that effectively communicates your
+                    message.</p>
+                  <button type="button" class="service-btn" onclick="scrollToContact()">Get Started</button>
                 </div>
               </div>
-              <!--Service Item End-->
-              <!--Service Item Start-->
-              <div class="service-item padd-15">
-                <div class="service-item-inner">
-                  <div class="icon">
-                    <i class="fa fa-laptop-code"></i>
-                  </div>
+            </div>
+            <!--Service Item End-->
+            <!--Service Item Start-->
+            <div class="service-item padd-15">
+              <div class="service-item-inner">
+                <div class="icon">
+                  <i class="fa fa-laptop-code"></i>
+                </div>
+                <div class="service-content">
                   <h4>Bug Fixing</h4>
-                  <p>
-                    I specialize in fixing website errors and ensuring smooth
-                    functionality. If you need to update your old website with
-                    new features, I can provide seamless improvements.
-                  </p>
+                  <p>I specialize in fixing website errors and ensuring smooth functionality. If you need to update your
+                    old website with new features, I can provide seamless improvements.</p>
+                  <button type="button" class="service-btn" onclick="scrollToContact()">Get Started</button>
                 </div>
               </div>
-              <!--Service Item End-->
-              <!--Service Item Start-->
-              <div class="service-item padd-15">
-                <div class="service-item-inner">
-                  <div class="icon">
-                    <i class="fa fa-palette"></i>
-                  </div>
+            </div>
+            <!--Service Item End-->
+            <!--Service Item Start-->
+            <div class="service-item padd-15">
+              <div class="service-item-inner">
+                <div class="icon">
+                  <i class="fa fa-palette"></i>
+                </div>
+                <div class="service-content">
                   <h4>Video Editing</h4>
-                  <p>
-                    I provide professional video editing with clear visuals,
-                    proper captions, and engaging content. Your videos will be
-                    polished and ready to captivate your social media audience
-                  </p>
+                  <p>I provide professional video editing with clear visuals, proper captions, and engaging content.
+                    Your videos will be polished and ready to captivate your social media audience.</p>
+                  <button type="button" class="service-btn" onclick="scrollToContact()">Get Started</button>
                 </div>
               </div>
-              <!--Service Item End-->
+            </div>
+            <!--Service Item End-->
+          </div>
+        </div>
+      </section>
+      <!--Services section End-->
+      <!--Project section start-->
+      <section class="projects section" id="projects">
+        <div class="container">
+          <div class="row">
+            <div class="section-title padd-15">
+              <h2>Projects</h2>
             </div>
           </div>
-        </section>
-        <!--Services section End-->
-        <!--Project section start-->
-        <section class="projects section" id="projects">
-          <div class="container">
-            <div class="row">
-              <div class="section-title padd-15">
-                <h2>Projects</h2>
-              </div>
-            </div>
-            <div class="row">
-              <div class="projects-heading padd-15">
-                <h2>My Projects :</h2>
-              </div>
-            </div>
-            <div class="row">
-              <!--Project item start-->
-              <div class="projects-item padd-15">
-                <div class="projects-item-inner" shadow-dark>
-                  <div class="projects-img">
-                    <img src="images/portfolio/pic-1.jpg" alt="" />
-                  </div>
-                </div>
-              </div>
-              <!--Project item end-->
-              <!--Project item start-->
-              <div class="projects-item padd-15">
-                <div class="projects-item-inner" shadow-dark>
-                  <div class="projects-img">
-                    <img src="images/portfolio/pic-2.jpg" alt="" />
-                  </div>
-                </div>
-              </div>
-              <!--Project item end-->
-              <!--Project item start-->
-              <div class="projects-item padd-15">
-                <div class="projects-item-inner" shadow-dark>
-                  <div class="projects-img">
-                    <img src="images/portfolio/pic-3.jpg" alt="" />
-                  </div>
-                </div>
-              </div>
-              <!--Project item end-->
-              <!--Project item start-->
-              <div class="projects-item padd-15">
-                <div class="projects-item-inner" shadow-dark>
-                  <div class="projects-img">
-                    <img src="images/portfolio/pic-4.jpg" alt="" />
-                  </div>
-                </div>
-              </div>
-              <!--Project item end-->
-              <!--Project item start-->
-              <div class="projects-item padd-15">
-                <div class="projects-item-inner" shadow-dark>
-                  <div class="projects-img">
-                    <img src="images/portfolio/pic-5.jpg" alt="" />
-                  </div>
-                </div>
-              </div>
-              <!--Project item end-->
-              <!--Project item start-->
-              <div class="projects-item padd-15">
-                <div class="projects-item-inner" shadow-dark>
-                  <div class="projects-img">
-                    <img src="images/portfolio/pic-6.jpg" alt="" />
-                  </div>
-                </div>
-              </div>
-              <!--Project item end-->
+          <div class="row">
+            <div class="projects-heading padd-15">
+              <h2>My Projects :</h2>
             </div>
           </div>
-        </section>
-        <!--Projects section end-->
-        <!--Art Store section start-->
-        <section class="portfolio section" id="Art-Store">
-          <div class="container">
-            <div class="row">
-              <div class="section-title padd-15">
-                <h2>Art Store</h2>
-              </div>
-            </div>
-            <div class="row">
-              <div class="portfolio-heading padd-15">
-                <h2>Exclusive Art for Sale :</h2>
-              </div>
-            </div>
-            <div class="row">
-              <!--Art store item start-->
-              <div class="portfolio-item padd-15">
-                <div class="portfolio-item-inner" shadow-dark>
-                  <div class="portfolio-img">
-                    <img src="images/portfolio/picture-1.jpg" alt="" />
-                  </div>
-                  <div class="portfolio-item-details">
-                    <p>
-                      <strong>Boho Art:</strong> A cultural and free-spirited
-                      art style from tribal traditions.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <!--Art store item end-->
-              <!--Art store item start-->
-              <div class="portfolio-item padd-15">
-                <div class="portfolio-item-inner" shadow-dark>
-                  <div class="portfolio-img">
-                    <img src="images/portfolio/picture-2.jpg" alt="" />
-                  </div>
-                  <div class="portfolio-item-details">
-                    <p>
-                      <strong>Acrylic Flower Painting:</strong> A vibrant floral
-                      painting using rich acrylic colors.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <!--Art store item end-->
-              <!--Art store item start-->
-              <div class="portfolio-item padd-15">
-                <div class="portfolio-item-inner" shadow-dark>
-                  <div class="portfolio-img">
-                    <img src="images/portfolio/picture-3.jpg" alt="" />
-                  </div>
-                  <div class="portfolio-item-details">
-                    <p>
-                      <strong>Mandala Art:</strong> A meditative geometric
-                      pattern symbolizing balance and harmony.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <!--Art store item end-->
-              <!--Art store item start-->
-              <div class="portfolio-item padd-15">
-                <div class="portfolio-item-inner" shadow-dark>
-                  <div class="portfolio-img">
-                    <img src="images/portfolio/picture-4.jpg" alt="" />
-                  </div>
-                  <div class="portfolio-item-details">
-                    <p>
-                      <strong>Lipan Art:</strong> A traditional Indian folk art
-                      decorated with mirrors & beautiful background colors.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <!--Art store item end-->
-              <!--Art store item start-->
-              <div class="portfolio-item padd-15">
-                <div class="portfolio-item-inner" shadow-dark>
-                  <div class="portfolio-img">
-                    <img src="images/portfolio/picture-5.jpg" alt="" />
-                  </div>
-                  <div class="portfolio-item-details">
-                    <p>
-                      <strong>Stone Painting:</strong> Art creatively painted on
-                      natural stones with fine details.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <!--Art store item end-->
-              <!--Art store item start-->
-              <div class="portfolio-item padd-15">
-                <div class="portfolio-item-inner" shadow-dark>
-                  <div class="portfolio-img">
-                    <img src="images/portfolio/picture-6.jpg" alt="" />
-                  </div>
-                  <div class="portfolio-item-details">
-                    <p>
-                      <strong>Moon Mandala Art:</strong> A celestial-themed
-                      mandala inspired by the moon’s beauty.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <!--Art store item end-->
-              <!--Art store item start-->
-              <div class="portfolio-item padd-15">
-                <div class="portfolio-item-inner" shadow-dark>
-                  <div class="portfolio-img">
-                    <img src="images/portfolio/picture-7.jpg" alt="" />
-                  </div>
-                  <div class="portfolio-item-details">
-                    <p>
-                      <strong>Zentangle Art:</strong> A structured yet relaxing
-                      pattern art for mindfulness.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <!--Art store item end-->
-              <!--Art store item start-->
-              <div class="portfolio-item padd-15">
-                <div class="portfolio-item-inner" shadow-dark>
-                  <div class="portfolio-img">
-                    <img src="images/portfolio/picture-8.jpg" alt="" />
-                  </div>
-                  <div class="portfolio-item-details">
-                    <p>
-                      <strong>Flower Doodle Art:</strong> A simple and playful
-                      floral design with artistic strokes.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <!--Art store item end-->
-            </div>
-          </div>
-        </section>
-        <!--Art Store section end-->
-        <!--Contact section start-->
-        <section class="contact section" id="contact">
-          <div class="container">
-            <div class="row">
-              <div class="section-title padd-15">
-                <h2>Contact Me</h2>
-              </div>
-            </div>
-            <h3 class="contact-title padd-15">Have You Any Questions ?</h3>
-            <h4 class="contact-sub-title padd-15">I'M AT YOUR SERVICES</h4>
-            <div class="row">
-              <!--Contact Info Item Start-->
-              <div class="contact-info-item padd-15">
-                <div class="icon">
-                  <i class="fa fa-phone"></i>
-                </div>
-                <h4>Call Us On</h4>
-                <p>+919427178247</p>
-              </div>
-              <!--Contact Info Item End-->
-              <!--Contact Info Item Start-->
-              <div class="contact-info-item padd-15">
-                <div class="icon">
-                  <i class="fa fa-map-marker-alt"></i>
-                </div>
-                <h4>Address</h4>
-                <p>Isanpur, Ahmedabad</p>
-              </div>
-              <!--Contact Info Item End-->
-              <!--Contact Info Item Start-->
-              <div class="contact-info-item padd-15">
-                <div class="icon">
-                  <i class="fa fa-envelope"></i>
-                </div>
-                <h4>Email</h4>
-                <p>naisargi1716@gmail.com</p>
-              </div>
-              <!--Contact Info Item End-->
-              <!--Contact Info Item Start-->
-              <div class="contact-info-item padd-15">
-                <div class="icon">
-                  <i class="fa fa-globe-europe"></i>
-                </div>
-                <h4>Website</h4>
-                <p>www.portfolio.com</p>
-              </div>
-              <!--Contact Info Item End-->
-            </div>
-            <h3 class="contact-title padd-15">SEND ME AN EMAIL</h3>
-            <h4 class="contact-sub-title padd-15">
-              I'M SUPPORTIVE TO MESSAGES
-            </h4>
-            <!--Contact form-->
-            <div class="row">
-              <div class="contact-form padd-15">
-                <div class="row">
-                  <div class="form-item col-6 padd-15">
-                    <div class="form-group">
-                      <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Name"
-                      />
-                    </div>
-                  </div>
-                  <div class="form-item col-6 padd-15">
-                    <div class="form-group">
-                      <input
-                        type="email"
-                        class="form-control"
-                        placeholder="Email"
-                      />
+          <div class="row">
+            <!--Project item start-->
+            <div class="projects-item padd-15">
+              <div class="projects-item-inner" shadow-dark>
+                <div class="projects-img">
+                  <img src="images/portfolio/pic-1.jpg" alt="Project 1" />
+                  <div class="project-overlay">
+                    <div class="project-info">
+                      <h3>Portfolio Website</h3>
+                      <p>A responsive portfolio website showcasing my work and skills</p>
+                      <button class="project-link view-details">View Details</button>
                     </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="form-item col-12 padd-15">
-                    <div class="form-group">
-                      <input
-                        name="text"
-                        class="form-control"
-                        id=""
-                        placeholder="Subject"
-                      />
+              </div>
+            </div>
+            <!--Project item end-->
+            <!--Project item start-->
+            <div class="projects-item padd-15">
+              <div class="projects-item-inner" shadow-dark>
+                <div class="projects-img">
+                  <img src="images/portfolio/pic-2.jpg" alt="Project 2" />
+                  <div class="project-overlay">
+                    <div class="project-info">
+                      <h3>E-Commerce Platform</h3>
+                      <p>Online shopping platform with user authentication</p>
+                      <button class="project-link view-details">View Details</button>
                     </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="form-item col-12 padd-15">
-                    <div class="form-group">
-                      <textarea
-                        name=""
-                        class="form-control"
-                        id=""
-                        placeholder="Message"
-                      ></textarea>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="form-item col-12 padd-15">
-                    <button type="submit" class="btn">Send Message</button>
                   </div>
                 </div>
               </div>
             </div>
+            <!--Project item end-->
+            <!--Project item start-->
+            <div class="projects-item padd-15">
+              <div class="projects-item-inner" shadow-dark>
+                <div class="projects-img">
+                  <img src="images/portfolio/pic-3.jpg" alt="Project 3" />
+                  <div class="project-overlay">
+                    <div class="project-info">
+                      <h3>Task Management App</h3>
+                      <p>Organize and track your daily tasks efficiently</p>
+                      <button class="project-link view-details">View Details</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--Project item end-->
+            <!--Project item start-->
+            <div class="projects-item padd-15">
+              <div class="projects-item-inner" shadow-dark>
+                <div class="projects-img">
+                  <img src="images/portfolio/pic-4.jpg" alt="Project 4" />
+                  <div class="project-overlay">
+                    <div class="project-info">
+                      <h3>Weather Dashboard</h3>
+                      <p>Real-time weather information and forecasts</p>
+                      <button class="project-link view-details">View Details</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--Project item end-->
+            <!--Project item start-->
+            <div class="projects-item padd-15">
+              <div class="projects-item-inner" shadow-dark>
+                <div class="projects-img">
+                  <img src="images/portfolio/pic-5.jpg" alt="Project 5" />
+                  <div class="project-overlay">
+                    <div class="project-info">
+                      <h3>Social Media Dashboard</h3>
+                      <p>Analytics and management for social media platforms</p>
+                      <button class="project-link view-details">View Details</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--Project item end-->
+            <!--Project item start-->
+            <div class="projects-item padd-15">
+              <div class="projects-item-inner" shadow-dark>
+                <div class="projects-img">
+                  <img src="images/portfolio/pic-6.jpg" alt="Project 6" />
+                  <div class="project-overlay">
+                    <div class="project-info">
+                      <h3>Recipe Finder</h3>
+                      <p>Discover and save your favorite recipes</p>
+                      <button class="project-link view-details">View Details</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--Project item end-->
           </div>
-        </section>
-        <!--Contact section end-->
-      </div>
-      <!--Main content End-->
+        </div>
+      </section>
+      <!--Projects section end-->
+
+      <!--Certificates section start-->
+      <section class="certificates section" id="certificates">
+        <div class="container">
+          <div class="row">
+            <div class="section-title padd-15">
+              <h2>Certificates</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="certificates-heading padd-15">
+              <h2>My Certifications :</h2>
+            </div>
+          </div>
+          <div class="row">
+            <!--Certificate item start-->
+            <div class="certificate-item padd-15">
+              <div class="certificate-item-inner" shadow-dark>
+                <div class="certificate-img">
+                  <img src="ceirtificates/certi-1.jpg" alt="Certificate 1" />
+                  <div class="certificate-overlay">
+                    <div class="certificate-info">
+                      <h3>Web Development</h3>
+                      <p>Complete Web Development Bootcamp</p>
+                      <button class="certificate-link view-certificate">View Certificate</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--Certificate item end-->
+
+            <!--Certificate item start-->
+            <div class="certificate-item padd-15">
+              <div class="certificate-item-inner" shadow-dark>
+                <div class="certificate-img">
+                  <img src="ceirtificates/certi-2.jpg" alt="Certificate 2" />
+                  <div class="certificate-overlay">
+                    <div class="certificate-info">
+                      <h3>JavaScript Mastery</h3>
+                      <p>Advanced JavaScript Concepts</p>
+                      <button class="certificate-link view-certificate">View Certificate</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--Certificate item end-->
+
+            <!--Certificate item start-->
+            <div class="certificate-item padd-15">
+              <div class="certificate-item-inner" shadow-dark>
+                <div class="certificate-img">
+                  <img src="ceirtificates/certi-3.jpg" alt="Certificate 3" />
+                  <div class="certificate-overlay">
+                    <div class="certificate-info">
+                      <h3>UI/UX Design</h3>
+                      <p>User Interface and Experience Design</p>
+                      <button class="certificate-link view-certificate">View Certificate</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--Certificate item end-->
+
+            <!--Certificate item start-->
+            <div class="certificate-item padd-15">
+              <div class="certificate-item-inner" shadow-dark>
+                <div class="certificate-img">
+                  <img src="ceirtificates/WhatsApp Image 2025-05-09 at 23.02.00_2d760076.jpg" alt="Certificate 4" />
+                  <div class="certificate-overlay">
+                    <div class="certificate-info">
+                      <h3>Python Programming</h3>
+                      <p>Advanced Python Development</p>
+                      <button class="certificate-link view-certificate">View Certificate</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--Certificate item end-->
+
+            <!--Certificate item start-->
+            <div class="certificate-item padd-15">
+              <div class="certificate-item-inner" shadow-dark>
+                <div class="certificate-img">
+                  <img src="ceirtificates/WhatsApp Image 2025-05-09 at 23.02.00_87652f40.jpg" alt="Certificate 5" />
+                  <div class="certificate-overlay">
+                    <div class="certificate-info">
+                      <h3>Data Science</h3>
+                      <p>Data Analysis and Visualization</p>
+                      <button class="certificate-link view-certificate">View Certificate</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--Certificate item end-->
+
+            <!--Certificate item start-->
+            <div class="certificate-item padd-15">
+              <div class="certificate-item-inner" shadow-dark>
+                <div class="certificate-img">
+                  <img src="ceirtificates/WhatsApp Image 2025-05-09 at 23.02.00_eb156109.jpg" alt="Certificate 6" />
+                  <div class="certificate-overlay">
+                    <div class="certificate-info">
+                      <h3>Machine Learning</h3>
+                      <p>AI and Machine Learning Fundamentals</p>
+                      <button class="certificate-link view-certificate">View Certificate</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--Certificate item end-->
+          </div>
+        </div>
+      </section>
+      <!--Certificates section end-->
+
+      <!--Art Store section start-->
+      <section class="portfolio section" id="Art-Store">
+        <div class="container">
+          <div class="row">
+            <div class="section-title padd-15">
+              <h2>Art Store</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="portfolio-heading padd-15">
+              <h2>Exclusive Art Collection</h2>
+              <p class="section-subtitle">Discover unique handcrafted pieces that bring creativity to life</p>
+            </div>
+          </div>
+          <div class="row art-grid">
+            <!--Art store item start-->
+            <div class="portfolio-item padd-15">
+              <div class="portfolio-item-inner" shadow-dark>
+                <div class="portfolio-img">
+                  <img src="images/portfolio/picture-1.jpg" alt="Boho Art" />
+                  <div class="quick-preview">
+                    <button class="quick-preview-btn">View Details</button>
+                  </div>
+                </div>
+                <div class="art-details">
+                  <h3>Boho Art</h3>
+                  <p>A cultural and free-spirited art style from tribal traditions.</p>
+                  <div class="art-meta">
+                    <span class="price-tag">$150</span>
+                    <span class="art-category">Traditional</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--Art store item end-->
+
+            <!--Art store item start-->
+            <div class="portfolio-item padd-15">
+              <div class="portfolio-item-inner" shadow-dark>
+                <div class="portfolio-img">
+                  <img src="images/portfolio/picture-2.jpg" alt="Acrylic Flower Painting" />
+                  <div class="quick-preview">
+                    <button class="quick-preview-btn">View Details</button>
+                  </div>
+                </div>
+                <div class="art-details">
+                  <h3>Acrylic Flower Painting</h3>
+                  <p>A vibrant floral painting using rich acrylic colors.</p>
+                  <div class="art-meta">
+                    <span class="price-tag">$200</span>
+                    <span class="art-category">Painting</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--Art store item end-->
+
+            <!--Art store item start-->
+            <div class="portfolio-item padd-15">
+              <div class="portfolio-item-inner" shadow-dark>
+                <div class="portfolio-img">
+                  <img src="images/portfolio/picture-3.jpg" alt="Mandala Art" />
+                  <div class="quick-preview">
+                    <button class="quick-preview-btn">View Details</button>
+                  </div>
+                </div>
+                <div class="art-details">
+                  <h3>Mandala Art</h3>
+                  <p>A meditative geometric pattern symbolizing balance and harmony.</p>
+                  <div class="art-meta">
+                    <span class="price-tag">$180</span>
+                    <span class="art-category">Geometric</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--Art store item end-->
+
+            <!--Art store item start-->
+            <div class="portfolio-item padd-15">
+              <div class="portfolio-item-inner" shadow-dark>
+                <div class="portfolio-img">
+                  <img src="images/portfolio/picture-4.jpg" alt="Lipan Art" />
+                  <div class="quick-preview">
+                    <button class="quick-preview-btn">View Details</button>
+                  </div>
+                </div>
+                <div class="art-details">
+                  <h3>Lipan Art</h3>
+                  <p>A traditional Indian folk art decorated with mirrors & beautiful background colors.</p>
+                  <div class="art-meta">
+                    <span class="price-tag">$250</span>
+                    <span class="art-category">Folk Art</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--Art store item end-->
+
+            <!--Art store item start-->
+            <div class="portfolio-item padd-15">
+              <div class="portfolio-item-inner" shadow-dark>
+                <div class="portfolio-img">
+                  <img src="images/portfolio/picture-5.jpg" alt="Stone Painting" />
+                  <div class="quick-preview">
+                    <button class="quick-preview-btn">View Details</button>
+                  </div>
+                </div>
+                <div class="art-details">
+                  <h3>Stone Painting</h3>
+                  <p>Art creatively painted on natural stones with fine details.</p>
+                  <div class="art-meta">
+                    <span class="price-tag">$120</span>
+                    <span class="art-category">Mixed Media</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--Art store item end-->
+
+            <!--Art store item start-->
+            <div class="portfolio-item padd-15">
+              <div class="portfolio-item-inner" shadow-dark>
+                <div class="portfolio-img">
+                  <img src="images/portfolio/picture-6.jpg" alt="Moon Mandala Art" />
+                  <div class="quick-preview">
+                    <button class="quick-preview-btn">View Details</button>
+                  </div>
+                </div>
+                <div class="art-details">
+                  <h3>Moon Mandala Art</h3>
+                  <p>A celestial-themed mandala inspired by the moon's beauty.</p>
+                  <div class="art-meta">
+                    <span class="price-tag">$220</span>
+                    <span class="art-category">Celestial</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--Art store item end-->
+
+            <!--Art store item start-->
+            <div class="portfolio-item padd-15">
+              <div class="portfolio-item-inner" shadow-dark>
+                <div class="portfolio-img">
+                  <img src="images/portfolio/picture-7.jpg" alt="Zentangle Art" />
+                  <div class="quick-preview">
+                    <button class="quick-preview-btn">View Details</button>
+                  </div>
+                </div>
+                <div class="art-details">
+                  <h3>Zentangle Art</h3>
+                  <p>A structured yet relaxing pattern art for mindfulness.</p>
+                  <div class="art-meta">
+                    <span class="price-tag">$160</span>
+                    <span class="art-category">Pattern</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--Art store item end-->
+
+            <!--Art store item start-->
+            <div class="portfolio-item padd-15">
+              <div class="portfolio-item-inner" shadow-dark>
+                <div class="portfolio-img">
+                  <img src="images/portfolio/picture-8.jpg" alt="Flower Doodle Art" />
+                  <div class="quick-preview">
+                    <button class="quick-preview-btn">View Details</button>
+                  </div>
+                </div>
+                <div class="art-details">
+                  <h3>Flower Doodle Art</h3>
+                  <p>A simple and playful floral design with artistic strokes.</p>
+                  <div class="art-meta">
+                    <span class="price-tag">$140</span>
+                    <span class="art-category">Doodle</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--Art store item end-->
+          </div>
+        </div>
+      </section>
+      <!--Art Store section end-->
+
+      <!--Contact section start-->
+      <section class="contact section" id="contact">
+        <div class="container">
+          <div class="row">
+            <div class="section-title padd-15">
+              <h2>Contact Me</h2>
+            </div>
+          </div>
+          <h3 class="contact-title padd-15">Have You Any Questions ?</h3>
+          <h4 class="contact-sub-title padd-15">I'M AT YOUR SERVICES</h4>
+          <div class="row">
+            <!--Contact Info Item Start-->
+            <div class="contact-info-item padd-15">
+              <div class="icon">
+                <i class="fa fa-phone"></i>
+              </div>
+              <h4>Call Us On</h4>
+              <p>+919427178247</p>
+            </div>
+            <!--Contact Info Item End-->
+            <!--Contact Info Item Start-->
+            <div class="contact-info-item padd-15">
+              <div class="icon">
+                <i class="fa fa-map-marker-alt"></i>
+              </div>
+              <h4>Address</h4>
+              <p>Isanpur, Ahmedabad</p>
+            </div>
+            <!--Contact Info Item End-->
+            <!--Contact Info Item Start-->
+            <div class="contact-info-item padd-15">
+              <div class="icon">
+                <i class="fa fa-envelope"></i>
+              </div>
+              <h4>Email</h4>
+              <p>naisargi1716@gmail.com</p>
+            </div>
+            <!--Contact Info Item End-->
+            <!--Contact Info Item Start-->
+            <div class="contact-info-item padd-15">
+              <div class="icon">
+                <i class="fa fa-globe-europe"></i>
+              </div>
+              <h4>Website</h4>
+              <p>www.portfolio.com</p>
+            </div>
+            <!--Contact Info Item End-->
+          </div>
+          <h3 class="contact-title padd-15">SEND ME AN EMAIL</h3>
+          <h4 class="contact-sub-title padd-15">
+            I'M SUPPORTIVE TO MESSAGES
+          </h4>
+          <!--Contact form-->
+          <div class="row">
+            <div class="contact-form padd-15">
+              <div class="row">
+                <div class="form-item col-6 padd-15">
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Name" />
+                  </div>
+                </div>
+                <div class="form-item col-6 padd-15">
+                  <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Email" />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-item col-12 padd-15">
+                  <div class="form-group">
+                    <input name="text" class="form-control" id="" placeholder="Subject" />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-item col-12 padd-15">
+                  <div class="form-group">
+                    <textarea name="" class="form-control" id="" placeholder="Message"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-item col-12 padd-15">
+                  <button type="submit" class="btn">Send Message</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--Contact section end-->
     </div>
-    <!--Main container End-->
-    <!--Style Switcher start-->
-    <div class="style-switcher">
-      <div class="style-switcher-toggler s-icon">
-        <i class="fas fa-cog fa-spin"></i>
+    <!--Main content End-->
+  </div>
+  <!--Main container End-->
+  <!--Style Switcher start-->
+  <div class="style-switcher">
+    <div class="style-switcher-toggler s-icon">
+      <i class="fas fa-cog fa-spin"></i>
+    </div>
+    <div class="day-night s-icon">
+      <i class="fas fa-moon"></i>
+    </div>
+    <h4>Theme Colors</h4>
+    <div class="colors">
+      <span class="color-1" onclick="setActiveStyle('color-1')" style="background: #e91e63;"></span>
+      <span class="color-2" onclick="setActiveStyle('color-2')" style="background: #9c27b0;"></span>
+      <span class="color-3" onclick="setActiveStyle('color-3')" style="background: #009688;"></span>
+      <span class="color-4" onclick="setActiveStyle('color-4')" style="background: #ff5722;"></span>
+      <span class="color-5" onclick="setActiveStyle('color-5')" style="background: #2196f3;"></span>
+    </div>
+  </div>
+  <!--Style Switcher End-->
+  <!--Javascript files-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js"
+    integrity="sha512-+2pW8xXU/rNr7VS+H62aqapfRpqFwnSQh9ap6THjsm41AxgA0MhFRtfrABS+Lx2KHJn82UOrnBKhjZOXpom2LQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="./js/script.js"></script>
+  <script src="./js/style-switcher.js"></script>
+
+  <!-- Art Modal -->
+  <div id="artModal" class="art-modal">
+    <div class="modal-content">
+      <span class="modal-close">&times;</span>
+      <div class="modal-image-container">
+        <img src="" alt="" class="modal-image">
       </div>
-      <div class="day-night s-icon">
-        <i class="fas"></i>
-      </div>
-      <h4>Theme colors</h4>
-      <div class="colors">
-        <span class="color-1" onclick="setActiveStyle('color-1')"></span>
-        <span class="color-2" onclick="setActiveStyle('color-2')"></span>
-        <span class="color-3" onclick="setActiveStyle('color-3')"></span>
-        <span class="color-4" onclick="setActiveStyle('color-4')"></span>
-        <span class="color-5" onclick="setActiveStyle('color-5')"></span>
+      <div class="modal-details">
+        <h2 class="modal-title"></h2>
+        <p class="modal-description"></p>
+        <div class="modal-price"></div>
       </div>
     </div>
-    <!--Style Switcher End-->
-    <!--Javascript files-->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js"
-      integrity="sha512-+2pW8xXU/rNr7VS+H62aqapfRpqFwnSQh9ap6THjsm41AxgA0MhFRtfrABS+Lx2KHJn82UOrnBKhjZOXpom2LQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script src="./js/script.js"></script>
-    <script src="./js/style-switcher.js"></script>
-  </body>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Get modal elements
+      const artModal = document.getElementById('artModal');
+      const modalImage = artModal.querySelector('.modal-image');
+      const modalTitle = artModal.querySelector('.modal-title');
+      const modalDescription = artModal.querySelector('.modal-description');
+      const modalPrice = artModal.querySelector('.modal-price');
+      const closeBtn = artModal.querySelector('.modal-close');
+
+      // Get all art items
+      const artItems = document.querySelectorAll('.portfolio-item');
+
+      // Function to show art in modal
+      function showArt(index) {
+        const item = artItems[index];
+        const img = item.querySelector('img');
+        const title = item.querySelector('h3').textContent;
+        const description = item.querySelector('p').textContent;
+        const price = item.querySelector('.price-tag').textContent;
+
+        modalImage.src = img.src;
+        modalTitle.textContent = title;
+        modalDescription.textContent = description;
+        modalPrice.textContent = price;
+      }
+
+      // Add click event to all "View Details" buttons
+      document.querySelectorAll('.quick-preview-btn').forEach((btn, index) => {
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          showArt(index);
+          artModal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+
+      // Close modal when clicking the close button
+      closeBtn.addEventListener('click', function () {
+        artModal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      });
+
+      // Close modal when clicking outside
+      artModal.addEventListener('click', function (e) {
+        if (e.target === artModal) {
+          artModal.classList.remove('active');
+          document.body.style.overflow = 'auto';
+        }
+      });
+
+      // Close modal with Escape key
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && artModal.classList.contains('active')) {
+          artModal.classList.remove('active');
+          document.body.style.overflow = 'auto';
+        }
+      });
+    });
+  </script>
+
+  <!-- Project Modal -->
+  <div class="project-modal">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <img src="" alt="" class="modal-image">
+      <div class="modal-details">
+        <h2 class="modal-title"></h2>
+        <p class="modal-description"></p>
+        <div class="project-features">
+          <h3>Key Features</h3>
+          <ul class="features-list"></ul>
+        </div>
+        <div class="project-tech-stack">
+          <h3>Technology Stack</h3>
+          <div class="tech-tags"></div>
+        </div>
+      </div>
+    </div>
+    <div class="project-loading"></div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const modal = document.querySelector('.project-modal');
+      const modalImage = modal.querySelector('.modal-image');
+      const modalTitle = modal.querySelector('.modal-title');
+      const modalDescription = modal.querySelector('.modal-description');
+      const featuresList = modal.querySelector('.features-list');
+      const techTags = modal.querySelector('.tech-tags');
+      const closeBtn = modal.querySelector('.modal-close');
+      const loading = modal.querySelector('.project-loading');
+
+      // Project data
+      const projects = [
+        {
+          title: "Portfolio Website",
+          description: "A responsive portfolio website showcasing my work and skills",
+          images: [
+            "project1/WhatsApp Image 2025-05-09 at 22.09.27_a5e9ff98.jpg",
+            "project1/WhatsApp Image 2025-05-09 at 22.09.27_1382cfa7.jpg",
+            "project1/WhatsApp Image 2025-05-09 at 22.09.27_4654cae1.jpg",
+            "project1/WhatsApp Image 2025-05-09 at 22.09.28_3bf7828a.jpg",
+            "project1/WhatsApp Image 2025-05-09 at 22.09.28_7c89375e.jpg",
+            "project1/WhatsApp Image 2025-05-09 at 22.09.29_8302161f.jpg"
+          ],
+          features: [
+            "Responsive design for all devices",
+            "Interactive UI elements",
+            "Smooth animations",
+            "Dark/Light theme support"
+          ],
+          tech: ["HTML", "CSS", "JavaScript"]
+        },
+        {
+          title: "E-Commerce Platform",
+          description: "Online shopping platform with user authentication",
+          image: "images/portfolio/pic-2.jpg",
+          features: [
+            "User authentication",
+            "Product catalog",
+            "Shopping cart",
+            "Payment integration"
+          ],
+          tech: ["React", "Node.js", "MongoDB"]
+        },
+        {
+          title: "Task Management App",
+          description: "Organize and track your daily tasks efficiently",
+          image: "images/portfolio/pic-3.jpg",
+          features: [
+            "Task creation and organization",
+            "Priority management",
+            "Due date tracking",
+            "Progress visualization"
+          ],
+          tech: ["Vue.js", "Firebase", "CSS3"]
+        },
+        {
+          title: "Weather Dashboard",
+          description: "Real-time weather information and forecasts",
+          image: "images/portfolio/pic-4.jpg",
+          features: [
+            "Real-time weather updates",
+            "5-day forecast",
+            "Location-based weather",
+            "Interactive weather maps"
+          ],
+          tech: ["JavaScript", "API", "Bootstrap"]
+        },
+        {
+          title: "Social Media Dashboard",
+          description: "Analytics and management for social media platforms",
+          image: "images/portfolio/pic-5.jpg",
+          features: [
+            "Social media analytics",
+            "Content scheduling",
+            "Engagement tracking",
+            "Performance reports"
+          ],
+          tech: ["React", "Redux", "Chart.js"]
+        },
+        {
+          title: "Recipe Finder",
+          description: "Discover and save your favorite recipes",
+          image: "images/portfolio/pic-6.jpg",
+          features: [
+            "Recipe search and filtering",
+            "User favorites collection",
+            "Ingredient-based search",
+            "Nutritional information"
+          ],
+          tech: ["Python", "Django", "PostgreSQL"]
+        }
+      ];
+
+      let currentIndex = 0;
+
+      function showProject(index) {
+        const project = projects[index];
+        loading.classList.add('active');
+
+        // Clear any existing gallery
+        const existingGallery = modal.querySelector('.project-gallery');
+        if (existingGallery) {
+          existingGallery.remove();
+        }
+
+        // Update image gallery if project has multiple images
+        if (project.images && project.images.length > 0) {
+          const imageGallery = document.createElement('div');
+          imageGallery.className = 'project-gallery';
+
+          let currentImageIndex = 0;
+
+          // Create thumbnail images
+          project.images.forEach((imgSrc, i) => {
+            const img = document.createElement('img');
+            img.src = imgSrc;
+            img.alt = `${project.title} - Image ${i + 1}`;
+            if (i === 0) img.classList.add('active');
+
+            img.onclick = () => {
+              currentImageIndex = i;
+              updateGallery();
+            };
+            imageGallery.appendChild(img);
+          });
+
+          function updateGallery() {
+            // Update main image
+            modalImage.src = project.images[currentImageIndex];
+
+            // Update active thumbnail
+            imageGallery.querySelectorAll('img').forEach((img, i) => {
+              img.classList.toggle('active', i === currentImageIndex);
+            });
+          }
+
+          // Insert gallery before the modal details
+          const modalDetails = modal.querySelector('.modal-details');
+          modalDetails.insertBefore(imageGallery, modalDetails.firstChild);
+        }
+
+        modalImage.src = project.images ? project.images[0] : project.image;
+        modalTitle.textContent = project.title;
+        modalDescription.textContent = project.description;
+
+        // Update features
+        featuresList.innerHTML = project.features
+          .map(feature => `<li>${feature}</li>`)
+          .join('');
+
+        // Update tech stack
+        techTags.innerHTML = project.tech
+          .map(tech => `<span class="tech-tag">${tech}</span>`)
+          .join('');
+
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+
+        modalImage.onload = () => {
+          loading.classList.remove('active');
+        };
+      }
+
+      // Open modal
+      document.querySelectorAll('.view-details').forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+          currentIndex = index;
+          showProject(currentIndex);
+        });
+      });
+
+      // Close modal
+      closeBtn.addEventListener('click', () => {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+
+      // Close on outside click
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+    });
+  </script>
+
+  <!-- Certificate Modal -->
+  <div class="certificate-modal">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <div class="certificate-loading"></div>
+      <div class="loading-text">Loading certificate...</div>
+      <img src="" alt="" class="modal-image">
+      <div class="modal-details">
+        <h2 class="modal-title"></h2>
+        <p class="modal-description"></p>
+        <div class="certificate-details">
+          <div class="issuer">
+            <h3>Issued By</h3>
+            <p class="issuer-name"></p>
+          </div>
+          <div class="date">
+            <h3>Date Issued</h3>
+            <p class="issue-date"></p>
+          </div>
+          <div class="credential">
+            <h3>Credential ID</h3>
+            <p class="credential-id"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const modal = document.querySelector('.certificate-modal');
+      const modalImage = modal.querySelector('.modal-image');
+      const modalTitle = modal.querySelector('.modal-title');
+      const modalDescription = modal.querySelector('.modal-description');
+      const issuerName = modal.querySelector('.issuer-name');
+      const issueDate = modal.querySelector('.issue-date');
+      const credentialId = modal.querySelector('.credential-id');
+      const closeBtn = modal.querySelector('.modal-close');
+      const loading = modal.querySelector('.certificate-loading');
+      const loadingText = modal.querySelector('.loading-text');
+
+      // Certificate data
+      const certificates = [
+        {
+          title: "Web Development",
+          description: "Complete Web Development Bootcamp",
+          image: "ceirtificates/certi-1.jpg",
+          issuer: "Udemy",
+          date: "January 2024",
+          credentialId: "UD-123456"
+        },
+        {
+          title: "JavaScript Mastery",
+          description: "Advanced JavaScript Concepts",
+          image: "ceirtificates/certi-2.jpg",
+          issuer: "Coursera",
+          date: "February 2024",
+          credentialId: "CR-789012"
+        },
+        {
+          title: "UI/UX Design",
+          description: "User Interface and Experience Design",
+          image: "ceirtificates/certi-3.jpg",
+          issuer: "Google",
+          date: "March 2024",
+          credentialId: "GG-345678"
+        },
+        {
+          title: "Python Programming",
+          description: "Advanced Python Development",
+          image: "ceirtificates/WhatsApp Image 2025-05-09 at 23.02.00_2d760076.jpg",
+          issuer: "DataCamp",
+          date: "April 2024",
+          credentialId: "DC-456789"
+        },
+        {
+          title: "Data Science",
+          description: "Data Analysis and Visualization",
+          image: "ceirtificates/WhatsApp Image 2025-05-09 at 23.02.00_87652f40.jpg",
+          issuer: "IBM",
+          date: "May 2024",
+          credentialId: "IBM-789012"
+        },
+        {
+          title: "Machine Learning",
+          description: "AI and Machine Learning Fundamentals",
+          image: "ceirtificates/WhatsApp Image 2025-05-09 at 23.02.00_eb156109.jpg",
+          issuer: "Stanford",
+          date: "June 2024",
+          credentialId: "ST-345678"
+        }
+      ];
+
+      function showCertificate(index) {
+        const certificate = certificates[index];
+
+        // Show loading state
+        loading.classList.add('active');
+        loadingText.classList.add('active');
+        modalImage.style.opacity = '0';
+
+        // Preload the image
+        const img = new Image();
+        img.onload = function () {
+          // Update modal content
+          modalImage.src = certificate.image;
+          modalTitle.textContent = certificate.title;
+          modalDescription.textContent = certificate.description;
+          issuerName.textContent = certificate.issuer;
+          issueDate.textContent = certificate.date;
+          credentialId.textContent = certificate.credentialId;
+
+          // Show modal
+          modal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+
+          // Hide loading state and show image
+          loading.classList.remove('active');
+          loadingText.classList.remove('active');
+          modalImage.style.opacity = '1';
+        };
+
+        img.onerror = function () {
+          // Handle image loading error
+          loading.classList.remove('active');
+          loadingText.classList.remove('active');
+          loadingText.textContent = 'Error loading certificate image';
+          loadingText.style.color = 'red';
+        };
+
+        img.src = certificate.image;
+      }
+
+      // Open modal
+      document.querySelectorAll('.view-certificate').forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+          showCertificate(index);
+        });
+      });
+
+      // Close modal
+      closeBtn.addEventListener('click', () => {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        // Reset loading text
+        loadingText.textContent = 'Loading certificate...';
+        loadingText.style.color = '';
+      });
+
+      // Close on outside click
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.classList.remove('active');
+          document.body.style.overflow = '';
+          // Reset loading text
+          loadingText.textContent = 'Loading certificate...';
+          loadingText.style.color = '';
+        }
+      });
+    });
+  </script>
+
+  <!-- Add this script before the closing body tag -->
+  <script>
+    function scrollToContact() {
+      const contactSection = document.querySelector('#contact');
+      if (contactSection) {
+        // Remove active class from all sections
+        document.querySelectorAll('.section').forEach(section => {
+          section.classList.remove('active');
+        });
+
+        // Add active class to contact section
+        contactSection.classList.add('active');
+
+        // Optionally, scroll to the contact section smoothly
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  </script>
+</body>
+
 </html>

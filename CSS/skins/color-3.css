@@ -1,3 +1,7 @@
 :root {
-  --skin-color: #37b182;
+  --skin-color: #009688;
+  --skin-color-light: #4db6ac;
+  --skin-color-dark: #00796b;
+  --skin-color-gradient: linear-gradient(45deg, #009688, #4db6ac);
+  --skin-color-shadow: rgba(0, 150, 136, 0.3);
 }
