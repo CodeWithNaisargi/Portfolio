@@ -645,43 +645,85 @@
       }
 
       @media (max-width: 767px) {
-    .art-grid {
-        grid-template-columns: 0.5fr;
-        gap: 45px;
-        padding: 20px;
-        padding-left: 11vw;
-    }
+        .art-grid {
+          grid-template-columns: 1fr;  /* Changed from 0.5fr to 1fr for full width */
+          gap: 30px;  /* Reduced gap for better spacing */
+          padding: 20px;
+          max-width: 100%;  /* Ensure grid doesn't overflow */
+          margin: 0 auto;  /* Center the grid */
+        }
+
+        .portfolio-item {
+          width: 100%;  /* Make items full width */
+          margin: 0 auto;  /* Center items */
+          transform-style: preserve-3d;
+        }
+
+        .portfolio-item-inner {
+          min-width: 100%;  /* Changed from 183% to 100% */
+          margin: 0 auto;  /* Center the inner container */
+        }
 
         .portfolio-img {
-          height: 240px;
+          height: 250px;  /* Fixed height for consistency */
+          width: 100%;
+          position: relative;
+          overflow: hidden;
+          border-radius: 20px 20px 0 0;  /* Match container radius */
+        }
+
+        .portfolio-img img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;  /* Ensure images cover area without distortion */
+          object-position: center;  /* Center the image */
         }
 
         .art-details {
-          padding: 10px;
-          min-height: 150px;
+          padding: 15px;  /* Adjusted padding */
+          min-height: auto;  /* Let content determine height */
         }
 
         .art-details h3 {
-          font-size: 12px;
+          font-size: 18px;  /* Increased from 12px for better readability */
+          margin-bottom: 8px;
         }
 
         .art-details p {
-          font-size: 15px;
-          margin-bottom: 15px;
+          font-size: 14px;  /* Adjusted for readability */
+          margin-bottom: 12px;
         }
 
         .price-tag {
-          font-size: 10px;
+          font-size: 16px;  /* Increased from 10px */
         }
 
         .art-category {
-          /* padding: 6px 15px; */
-          font-size: 14px;
+          padding: 6px 12px;
+          font-size: 13px;
+        }
+      }
+
+      /* Add specific styles for extra small devices */
+      @media (max-width: 375px) {
+        .art-grid {
+          padding: 15px;  /* Reduced padding for smaller screens */
         }
 
-        .quick-preview-btn {
-          padding: 10px;
-          font-size: 15px;
+        .portfolio-img {
+          height: 200px;  /* Slightly reduced height */
+        }
+
+        .art-details {
+          padding: 12px;
+        }
+
+        .art-details h3 {
+          font-size: 16px;
+        }
+
+        .art-details p {
+          font-size: 13px;
         }
       }
     </style>
@@ -1314,7 +1356,7 @@
                         <h3>The Raven</h3>
                         <p>
                           The Raven is a visually rich poetry website that
-                          presents Edgar Allan Poe’s classic poem with
+                          presents Edgar Allan Poe's classic poem with
                           atmospheric images, enhancing the eerie, emotional
                           journey of the narrator through text and art.
                         </p>
@@ -2075,7 +2117,7 @@
           {
             title: "The Ravem",
             description:
-              "The Raven is a visually rich poetry website that presents Edgar Allan Poe’s classic poem with atmospheric images, enhancing the eerie, emotional journey of the narrator through text and art.",
+              "The Raven is a visually rich poetry website that presents Edgar Allan Poe's classic poem with atmospheric images, enhancing the eerie, emotional journey of the narrator through text and art.",
             images: [
               "project5/rav-1.png",
               "project5/rav-2.png",
