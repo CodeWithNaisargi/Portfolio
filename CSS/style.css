@@ -663,48 +663,12 @@ h3.my-profession {
 .portfolio .portfolio-heading {
   flex: 0 0 100%;
   max-width: 100%;
-  margin-bottom: 5%;
+  margin-bottom: 30px;
 }
 
 .portfolio .portfolio-heading h2 {
   color: var(--text-black-900);
-  font-weight: 500;
-}
-
-.portfolio .portfolio-item {
-  flex: 0 0 50;
-  max-width: 50%;
-  margin-bottom: 5%;
-}
-
-.portfolio .portfolio-item-inner {
-  border: 6px solid var(--bg-black-100);
-  border-radius: 10pxn;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-.portfolio-img img {
-  width: 100%;
-  object-fit: fill;
-}
-.portfolio-item-details {
-  background: var(--bg-black-100);
-  padding: 10px;
-  border-radius: 6px;
-  margin-top: 10px;
-  font-size: 16px;
-}
-.portfolio-item-details p {
-  margin: 5px 0;
-  color: var(--text-black-900);
-}
-.portfolio-img img {
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-.portfolio-img img:hover {
-  transform: scale(1.05);
-  opacity: 0.9;
+  font-weight: 600;
 }
 
 /* Contact */
