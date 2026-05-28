@@ -1477,55 +1477,62 @@
             <!--Contact form-->
             <div class="row">
               <div class="contact-form padd-15">
-                <div class="row">
-                  <div class="form-item col-6 padd-15">
-                    <div class="form-group">
-                      <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Name"
-                      />
+                <form id="contact-form" onsubmit="return false;">
+                  <div class="row">
+                    <div class="form-item col-6 padd-15">
+                      <div class="form-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="contact-name"
+                          placeholder="Name"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="form-item col-6 padd-15">
+                      <div class="form-group">
+                        <input
+                          type="email"
+                          class="form-control"
+                          id="contact-email"
+                          placeholder="Email"
+                          required
+                        />
+                      </div>
                     </div>
                   </div>
-                  <div class="form-item col-6 padd-15">
-                    <div class="form-group">
-                      <input
-                        type="email"
-                        class="form-control"
-                        placeholder="Email"
-                      />
+                  <div class="row">
+                    <div class="form-item col-12 padd-15">
+                      <div class="form-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="contact-subject"
+                          placeholder="Subject"
+                          required
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="form-item col-12 padd-15">
-                    <div class="form-group">
-                      <input
-                        name="text"
-                        class="form-control"
-                        id=""
-                        placeholder="Subject"
-                      />
+                  <div class="row">
+                    <div class="form-item col-12 padd-15">
+                      <div class="form-group">
+                        <textarea
+                          class="form-control"
+                          id="contact-message"
+                          placeholder="Message"
+                          required
+                        ></textarea>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="form-item col-12 padd-15">
-                    <div class="form-group">
-                      <textarea
-                        name=""
-                        class="form-control"
-                        id=""
-                        placeholder="Message"
-                      ></textarea>
+                  <div class="row">
+                    <div class="form-item col-12 padd-15">
+                      <button type="submit" id="contact-submit" class="btn">Send Message</button>
                     </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="form-item col-12 padd-15">
-                    <button type="submit" class="btn">Send Message</button>
-                  </div>
-                </div>
+                </form>
               </div>
             </div>
           </div>

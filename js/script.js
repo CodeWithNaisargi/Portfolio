@@ -79,3 +79,46 @@ function asideSectionTogglerBtn() {
     allSection[i].classList.toggle("open");
   }
 }
+
+/* Contact Form Handling */
+const contactForm = document.getElementById("contact-form");
+if (contactForm) {
+  contactForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const submitBtn = document.getElementById("contact-submit");
+    const originalBtnText = submitBtn.innerText;
+    
+    submitBtn.innerText = "Sending...";
+    submitBtn.disabled = true;
+
+    const name = document.getElementById("contact-name").value;
+    const email = document.getElementById("contact-email").value;
+    const subject = document.getElementById("contact-subject").value;
+    const message = document.getElementById("contact-message").value;
+
+    try {
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ name, email, subject, message })
+      });
+
+      const result = await response.json();
+      
+      if (response.ok) {
+        alert("Email sent successfully!");
+        contactForm.reset();
+      } else {
+        alert("Error: " + (result.error || "Failed to send email."));
+      }
+    } catch (error) {
+      console.error("Error sending email:", error);
+      alert("Error sending email. Please try again later.");
+    } finally {
+      submitBtn.innerText = originalBtnText;
+      submitBtn.disabled = false;
+    }
+  });
+}
