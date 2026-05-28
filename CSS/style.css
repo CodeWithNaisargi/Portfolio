@@ -571,54 +571,105 @@ h3.my-profession {
 .service .service-item .service-item-inner {
   background-color: var(--bg-black-100);
   border: 1px solid var(--bg-black-50);
-  border-radius: 10px;
-  padding: 30px 15px;
+  border-radius: 20px;
+  padding: 40px 20px;
   text-align: center;
-  transition: all 0.7s ease;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.service .service-item .service-item-inner::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--skin-color);
+  z-index: -1;
+  transition: all 0.4s ease;
+  transform: scaleY(0);
+  transform-origin: bottom;
+}
+
+.service .service-item .service-item-inner:hover::before {
+  transform: scaleY(1);
 }
 
 .service .service-item .service-item-inner:hover {
-  box-shadow: 0 0 20px rgba(48, 46, 77, 0.15);
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  border-color: transparent;
 }
 
 .service .service-item .service-item-inner .icon {
-  height: 60px;
-  width: 60px;
+  height: 70px;
+  width: 70px;
   border-radius: 50%;
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0 auto 30px;
-  text-align: center;
-  transition: all o.7s ease;
+  background-color: rgba(233, 30, 99, 0.1);
+  transition: all 0.4s ease;
 }
 
-.service .service-item .service-item-inner .icon .fa {
-  font-size: 40px;
-  line-height: 60px;
+.service .service-item .service-item-inner .icon i {
+  font-size: 32px;
   color: var(--skin-color);
-  transition: all 1s ease;
+  transition: all 0.4s ease;
 }
 
 .service .service-item .service-item-inner:hover .icon {
-  background: var(--skin-color);
+  background-color: #ffffff;
+  transform: scale(1.1);
 }
 
-.service .service-item .service-item-inner:hover .icon .fa {
-  font-size: 25px;
-  color: #ffffff;
+.service .service-item .service-item-inner:hover .icon i {
+  color: var(--skin-color);
 }
 
 .service .service-item .service-item-inner h4 {
-  font-size: 18px;
+  font-size: 20px;
   margin-bottom: 15px;
   color: var(--text-black-900);
   font-weight: 700;
   text-transform: capitalize;
+  transition: all 0.4s ease;
 }
 
 .service .service-item .service-item-inner p {
   font-size: 16px;
   color: var(--text-black-700);
   line-height: 25px;
+  transition: all 0.4s ease;
+  margin-bottom: 20px;
+}
+
+.service .service-item .service-item-inner:hover h4,
+.service .service-item .service-item-inner:hover p {
+  color: #ffffff;
+}
+
+.service .service-item .service-item-inner .service-btn {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px 30px;
+  color: #ffffff;
+  border-radius: 30px;
+  border: none;
+  background: var(--skin-color);
+  transition: all 0.4s ease;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(233, 30, 99, 0.2);
+}
+
+.service .service-item .service-item-inner:hover .service-btn {
+  background: #ffffff;
+  color: var(--skin-color);
 }
 /* Project */
 
