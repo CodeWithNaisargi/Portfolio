@@ -1,6 +1,6 @@
 /* Typing Animation */
 var typed = new Typed(".typing", {
-  strings: ["", "Prompt Engineering", "Web Developer", "Artist", "Content Writer"],
+  strings: ["", "Prompt Engineer", "Web Developer", "Artist", "Content Writer"],
   typeSpeed: 100,
   BacksSpeed: 60,
   loop: true,
@@ -81,6 +81,35 @@ function asideSectionTogglerBtn() {
 }
 
 /* Contact Form Handling */
+function showNotification(message, isSuccess = true) {
+  const notif = document.createElement("div");
+  notif.innerText = message;
+  notif.style.position = "fixed";
+  notif.style.top = "20px";
+  notif.style.right = "20px";
+  notif.style.padding = "15px 25px";
+  notif.style.borderRadius = "5px";
+  notif.style.color = "#fff";
+  notif.style.background = isSuccess ? "var(--skin-color)" : "#dc3545";
+  notif.style.boxShadow = "0 4px 6px rgba(0,0,0,0.1)";
+  notif.style.zIndex = "9999";
+  notif.style.transition = "opacity 0.3s ease";
+  notif.style.opacity = "0";
+
+  document.body.appendChild(notif);
+
+  setTimeout(() => {
+    notif.style.opacity = "1";
+  }, 10);
+
+  setTimeout(() => {
+    notif.style.opacity = "0";
+    setTimeout(() => {
+      notif.remove();
+    }, 300);
+  }, 3000);
+}
+
 const contactForm = document.getElementById("contact-form");
 if (contactForm) {
   contactForm.addEventListener("submit", async function (e) {
@@ -108,14 +137,14 @@ if (contactForm) {
       const result = await response.json();
       
       if (response.ok) {
-        alert("Email sent successfully!");
+        showNotification("Email sent successfully!", true);
         contactForm.reset();
       } else {
-        alert("Error: " + (result.error || "Failed to send email."));
+        showNotification("Error: " + (result.error || "Failed to send email."), false);
       }
     } catch (error) {
       console.error("Error sending email:", error);
-      alert("Error sending email. Please try again later.");
+      showNotification("Error sending email. Please try again later.", false);
     } finally {
       submitBtn.innerText = originalBtnText;
       submitBtn.disabled = false;
